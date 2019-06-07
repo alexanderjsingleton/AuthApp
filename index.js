@@ -29,3 +29,15 @@ passport.deserializeUser(function(id, cb) {
     cb(err, user);
   });
 });
+
+/* MONGOOSE SETUP */
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/MyDatabase');
+
+const Schema = mongoose.Schema;
+const UserDetail = new Schema({
+      username: String,
+      password: String
+    });
+const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
